@@ -86,6 +86,9 @@ header img{
     text-align: center;
     margin-bottom: 20px;
 }
+.nosotros div{
+    width: 50%;
+}
 .nosotros div p{
     text-align: center;
     margin-right: 20px;
@@ -99,20 +102,19 @@ header img{
     align-items: center;
     flex-direction: row-reverse;
     padding: 40px 20px;
-    
-    
-    
-    
 }
 
 .servicios img{
-    width: 1000px;
+    width: 400px;
     height: 400px;
 }
 
 .servicios div h3{
     text-align: center;
     margin-bottom: 20px;
+}
+.servicios div{
+    width: 50%;
 }
 .servicios div p{
     text-align: center;
