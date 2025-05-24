@@ -21,15 +21,23 @@ header{
     align-items: center;
     background-color: #F79B72;
     padding: 10px;
+    
 }
 header nav ul{
     list-style: none;
     display: flex;
     gap: 20px;
 }
-header nav ul li{
+header nav ul li a{
     font-size: 20px;
+    text-decoration: none;
     color: aliceblue;
+}
+header nav ul li:hover{
+    transform: scale(1.1);
+}
+header nav ul li a:hover{
+    color: #ffbc0e;
 }
 
 header{
@@ -38,7 +46,12 @@ header{
 }
 header img{
     width: 100px;
+    transition: all 0.3s;
 }
+header img:hover{
+    transform: scale(1.2);
+}
+
 /****************************************************HEADER*************************************************/
 
 /****************************************************MAIN*************************************************/
@@ -134,11 +147,15 @@ footer{
     display: flex;
     flex-direction: column;
     padding: 10px;
+    border-radius: 8px;
 }
-footer .footer-menu-navegacion{
+
+footer .logo-footer{ /*Para distribuir el menu de navegacion del footer le aplico flexbox al ul NO AL FOOTER*/
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    flex-direction: column;
+    margin-bottom: 10px;
 }
 
 footer ul{ /*Para distribuir el menu de navegacion del footer le aplico flexbox al ul NO AL FOOTER*/
@@ -153,16 +170,46 @@ footer ul li{ /*Para distribuir el menu de navegacion del footer le aplico flexb
 footer p{
     text-align: center;
     color: aliceblue;
+    margin-bottom: 15px;
 }
 footer img{
     width: 100px;
+    transition: all 0.3s;
 }
+footer img:hover{
+    transform: scale(1.2);
+}
+
 .redes-sociales{
     text-align: center;
     color: aliceblue;
+}  
+.redes-sociales a{
+    text-decoration: none;
+    color: aliceblue;
+} 
+
+ .enlaces{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+
+}    
+.enlaces li:hover{
+    transform: scale(1.1);
+
+}  
+.enlaces a{
+    text-decoration: none;
+    color: aliceblue;
+    
+} 
+.enlaces a:hover{
+    color: #ffbc0e;
 }
-
-
+    
+} 
 
 
 
