@@ -2,62 +2,45 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Comic Sans MS", sans-serif;/*Axel aca le estoy dando un tipo de fuente a la letra de mi pagina.*/
-} /*Axel aca va al inicio de todo nuestro selector universal y aplicamos el reset, reseteo para la pagina*/
+    font-family: "Comic Sans MS", sans-serif;
+} 
 
-.contenedor {/*Axel aca le aplicamos estilos a nuestra clase contenedor que es un div que agrupa toda mi estructura*/
-    width: 90%; /*Axel aca width es para darle tamaño, tamaño en porcentajes.*/
-    max-width: 1200px;/*Axel aca no se que es lo que hace*/
-    margin: 20px auto;/*Axel aca aplicamos un margen que son el espacio entre el border para afuera*/
-    padding: 20px;/*Axel aca aplicamos un padding que es un espacion entre el border para adentro.*/
-    border: 2px solid #ddd;/*Axel aca aplicamos un border a nuestro contenedor para que se vea*/
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);/*Axel aca no se lo que hace*/
+.contenedor {
+    width: 90%; 
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 2px solid #ddd;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }
+
 
 /****************************************************HEADER*************************************************/
-header{
-    display: flex; /*Axel aca le decimos ala caja que tome el comportamiento de flexible.*/
-    justify-content: space-between;/*Axel aca le decimos que nos deje un espaciado especifico*/
-    align-items: center;/*Axel aca esta propiedad se coloca como "siameses", trabaja en conjunto con el display flex.*/
-    background-color: #F79B72;/*Axel aca le aplicamos fondo de color*/
-    padding: 10px;
-    
-}
-header nav ul{
-    list-style: none; /*Axel aca le quitamos los puntitos a las listas.*/
-    display: flex;
-    gap: 20px;/*Axel aca le estoy dando un espacio entre los elementos de la lista de 20 px, es una propiedad de flexbox gap muy utlizado.*/
+nav a img {
+    width: 100px;
+    height: 100px;
 }
 
-header nav ul li a{ /*Axel aca recorro de padres a hijos hasta llegar a los enlaces*/
-    font-size: 20px;/*Axel aca le estoy dando un tamaño al tipo de letra*/
-    text-decoration: none;/*Axel aca le estoy quitando a los enlaces la rayita azul que viene por default.*/
-    color: aliceblue;/*Axel aca le doy un color a letra de los enlaces*/
-}
-header nav ul li:hover{/*Axel aca estoy aplicando un hover que es un efecto con el mouse al pasar.*/
-    transform: scale(1.1);/*Axel nose que hace esta propiedad*/
-}
-header nav ul li a:hover{
-    color: #ffbc0e;
-}
-
-header{
+.menu-color {
     background-color: #2A4759;
-    padding-bottom: 20px;
 }
-header img{
-    width: 100px; /*Axel aca es muy comun darle tamaño a las imagenes con width en pixeles tambien puedo incluir un heigth por alto.*/
-    transition: all 0.3s;/*Axel aca nose que es lo que hace.*/
+
+.navbar-toggler {
+    background-color: #ffffff;
 }
-header img:hover{
-    transform: scale(1.2);
+.contacto .formulario-contenedor{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin-bottom: 20px;
+    margin-top: 20px;
 }
 
 /****************************************************HEADER*************************************************/
 
 /****************************************************MAIN*************************************************/
 .hero{
-    width: 100%; /*Axel aca con todas estas propiedades muestro un bonito fondo de pantalla en la pagina en la seccion inicial, con calc saco las medidas justas que quiero que tome mi fondo de pantalla en la pagina, midiendo el nav y eso se lo resto.*/
+    width: 100%; 
     height: calc(100vh - 135px);
     display: flex;
     flex-direction: column;
@@ -72,8 +55,8 @@ header img:hover{
 
 .hero h1{
     color: aliceblue;
-    text-align: center; /*Axel aca esta propiedad es muy utilizada para centrar un titulo o parrafo.*/
-    font-weight: normal;/*Axel aca esta propiedad es para darle el grosor ala letra.*/
+    text-align: center; 
+    font-weight: normal;
     font-size: 40px;
     border: 2px solid aliceblue;
     padding: 10px;
@@ -98,7 +81,7 @@ header img:hover{
     margin-bottom: 20px;
 }
 .nosotros div{
-    width: 50%;/*Axel aca este porcentaje que le damos al div es muy importante pone prolija los textos con las imagenes los "acomoda" cierta forma.*/
+    width: 50%;
 }
 .nosotros div p{
     text-align: center;
@@ -109,9 +92,9 @@ header img:hover{
 
 .servicios{
     display: flex;
-    justify-content: space-evenly;/*Axel aca evenly deja un espacio al principio y al final del contenedor.*/
+    justify-content: space-evenly;
     align-items: center;
-    flex-direction: row-reverse;/*Axel aca le damos la direccion de fila al revez.*/
+    flex-direction: row-reverse;
     padding: 20px;
 }
 
@@ -125,13 +108,66 @@ header img:hover{
     margin-bottom: 20px;
 }
 .servicios div{
-    width: 50%; /*Axel aca este tamaño que le damos al contenedor div es muy importante ya que me deja prolija los textos y las imagenes.*/
+    width: 50%; 
 }
 .servicios div p{
     text-align: center;
     margin-left: 20px;
     font-size: 20px;
 }
+
+.productos div img{
+    width: 300px;
+    height: 250px;
+}
+
+.productos .productos-contenedor {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.productos .productos-contenedor div{
+    border: 2px gray solid;
+    width: 307px;
+    height: 350px;
+    text-align: center;
+    margin: 20px;
+}
+
+.productos h2{
+    background-color: #2A4759;
+    color: aliceblue;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 18px;
+}
+
+
+.productos div h3{
+    margin-bottom: 20px;
+    font-size: 20px;
+
+}
+
+.productos div a{
+    background-color: black;
+    color: aliceblue;
+    text-decoration: none;
+    padding: 15px;
+
+}
+
+.contacto h2{
+    background-color: #2A4759;
+    color: aliceblue;
+    text-align: center;
+    padding: 18px;
+    text-transform: uppercase;
+
+}
+
 
 
 span{
@@ -144,13 +180,15 @@ span{
 footer{
     background-color: #2A4759;
     display: flex;
-    flex-direction: column; /*Axel aca column me distribuye los elementos en forma de columna*/
+    flex-wrap: wrap;
+    flex-direction: column; 
     padding: 10px;
-    border-radius: 8px; /*Axel aca esta propiedad es para darle un efecto de redondel o bordeado al borde.*/
+    border-radius: 8px; 
 }
 
 footer .logo-footer{ 
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     flex-direction: column;
@@ -160,6 +198,7 @@ footer .logo-footer{
 footer ul{ 
     list-style: none;
     display: flex;
+    flex-wrap: wrap;
     gap: 20px;
 }
 footer ul li{ 
@@ -173,10 +212,10 @@ footer p{
 }
 footer img{
     width: 100px;
-    transition: all 0.3s; /*Axel aca esta propiedad nose lo que hace seguramente sea una animacion*/
+    transition: all 0.3s; 
 }
 footer img:hover{
-    transform: scale(1.2);/*Axel nose que hace esta propiedad*/
+    transform: scale(1.2);
 }
 
 .redes-sociales{
@@ -196,7 +235,7 @@ footer img:hover{
 
 }    
 .enlaces li:hover{
-    transform: scale(1.1);/*Axel nose que hace esta propiedad*/
+    transform: scale(1.1);
 
 }  
 .enlaces a{
@@ -207,7 +246,44 @@ footer img:hover{
 .enlaces a:hover{
     color: #ffbc0e;
 }
+
+
+
+@media screen and (max-width:850px){
+    .nosotros{
+        flex-direction: column;
+    }
+    .nosotros div{
+        width: 80%;
+        text-align: center;
+        margin: 50px;
+    }
+    .servicios{
+        flex-direction: column;
+    }
+    .servicios div{
+        width: 80%;
+        text-align: center;
+        margin: 50px;
+    }
+    .sticky-top {
+        position: static !important;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .nosotros  img {
+        width: 100%;
+        height: auto;
+        /* Reducir el ancho de la imagen para pantallas más pequeñas */
+    }
+    .servicios  img {
+        width: 100%;
+        height: auto;
+        /* Reducir el ancho de la imagen para pantallas más pequeñas */
+    }
     
+}
 
 
 
