@@ -1,94 +1,119 @@
-const productosTecnologicos = [
-{id: 1, nombre: "Celular", precio: 210, img: "./img/celular.png"},
-  {id: 2, nombre: "Notebook", precio: 350, img: "./img/notebook.jpg"},
-  {id: 3, nombre: "Auriculares", precio: 280, img: "./img/auriculares.jpg"},
- ];
+document.addEventListener('DOMContentLoaded', () => {
+    const productosDisponibles = [
+      { id: '1', nombre: 'Celular', precio: 25.00, img: "./img/celular.png" },
+      { id: '2', nombre: 'Notebook', precio: 40.00, img: "./img/notebook.jpg" },
+      { id: '3', nombre: 'Auriculares', precio: 60.00, img: "./img/auriculares.jpg" },
+    ];
 
- const productosContenedor = document.querySelector(".productos-contenedor")
-  productosTecnologicos.forEach(productos =>{ //Axel ojo el nombre del servicios debe coincidir con el nombre del objeto y propiedades
-    const card = document.createElement("div")
+    const contenedorListaProductos = document.getElementById('contenedorListaProductos');
 
-    const image = document.createElement("img")
-    image.src = productos.img
-    image.alt = productos.nombre
-    image.id = productos.id
+    function renderizarProductos() {
+      const productosHtml = productosDisponibles.map(producto => {
+        return `
+          <div class="item-producto">
+            <h3>${producto.nombre}</h3>
+            <img src="${producto.img}" alt="${producto.nombre}" id="${producto.id}">
+            <p>Precio: $${producto.precio.toFixed(2)}</p>
+            <button class="btn-agregar-carrito" id="btn-agregar-${producto.id}">Agregar al Carrito</button>
+          </div>
+        `;
+      });
 
-    const name = document.createElement("h3")
-    name.textContent = productos.nombre
+      contenedorListaProductos.innerHTML = productosHtml.join('');
+      adjuntarEventosAgregarCarrito();
 
-    const boton = document.createElement("a")
-    boton.textContent =`$ ${productos.precio}`
+      // 🟢 Ahora las imágenes existen, aplicamos efecto hover
+      agregarEfectoCambioImagen("1", "./img/robot.jpg", "./img/celular.png");
+      agregarEfectoCambioImagen("2", "./img/robot.jpg", "./img/notebook.jpg");
+      agregarEfectoCambioImagen("3", "./img/robot.jpg", "./img/auriculares.jpg");
+    }
 
-    //Axel luego de eso agregamos añadimos todos los elementos creados a la card
-    card.appendChild(image)
-    card.appendChild(name)
-    card.appendChild(boton)
+    function adjuntarEventosAgregarCarrito() {
+      productosDisponibles.forEach(producto => {
+        const boton = document.getElementById(`btn-agregar-${producto.id}`);
+        if (boton) {
+          boton.addEventListener('click', () => {
+            agregarProductoAlCarrito(producto);
+          });
+        }
+      });
+    }
 
-    productosContenedor.appendChild(card)
-    //Axel fuimos creando elementos asignadole a variables
-    //Axel le estamos inyectando elementos desde js
-});
+    function agregarProductoAlCarrito(productoAAgregar) {
+      let carrito = JSON.parse(localStorage.getItem('carritoDeCompras')) || [];
+      const indiceProductoExistente = carrito.findIndex(item => item.id === productoAAgregar.id);
 
-console.log("hola");
+      if (indiceProductoExistente !== -1) {
+        carrito[indiceProductoExistente].cantidad++;
+      } else {
+        carrito.push({
+          id: productoAAgregar.id,
+          nombre: productoAAgregar.nombre,
+          precio: productoAAgregar.precio,
+          cantidad: 1
+        });
+      }
 
-const texto = "Compre con confianza";
-let i = 0;
-let escribiendo = true;
-const speed = 100;
+      localStorage.setItem('carritoDeCompras', JSON.stringify(carrito));
+      alert(`${productoAAgregar.nombre} agregado al carrito!`);
+    }
 
-function escribirEfecto() {
+    function agregarEfectoCambioImagen(idElemento, imagenHover, imagenOriginal) {
+      const elemento = document.getElementById(idElemento);
+      if (!elemento) return;
+
+      elemento.addEventListener("mouseenter", () => {
+        elemento.src = imagenHover;
+      });
+
+      elemento.addEventListener("mouseleave", () => {
+        elemento.src = imagenOriginal;
+      });
+    }
+
+    renderizarProductos();
+  });
+
+  // 📝 Efecto de escritura en el texto
+  const texto = "Compre con confianza";
+  let i = 0;
+  let escribiendo = true;
+  const speed = 100;
+
+  function escribirEfecto() {
     const titulo = document.getElementById("texto");
 
     if (escribiendo) {
-        if (i < texto.length) {
-            i++;
-        } else {
-            escribiendo = false;
-            setTimeout(escribirEfecto, speed * 3);
-            return;
-        }
+      if (i < texto.length) {
+        i++;
+      } else {
+        escribiendo = false;
+        setTimeout(escribirEfecto, speed * 3);
+        return;
+      }
     } else {
-        if (i > 0) {
-            i--;
-        } else {
-            escribiendo = true;
-            setTimeout(escribirEfecto, speed * 3);
-            return;
-        }
+      if (i > 0) {
+        i--;
+      } else {
+        escribiendo = true;
+        setTimeout(escribirEfecto, speed * 3);
+        return;
+      }
     }
 
-    // Mostrar el texto con "confianza" en rojo si ya se escribió esa parte
     let textoActual = texto.substring(0, i);
     if (textoActual.includes("confianza")) {
-        const index = textoActual.indexOf("confianza");
-        const antes = textoActual.substring(0, index);
-        const palabra = `<span style="color:red">confianza!</span>`;
-        const despues = textoActual.substring(index + "confianza".length);
-        titulo.innerHTML = antes + palabra + despues;
+      const index = textoActual.indexOf("confianza");
+      const antes = textoActual.substring(0, index);
+      const palabra = `<span style="color:red">confianza</span>`;
+      const despues = textoActual.substring(index + "confianza".length);
+      titulo.innerHTML = antes + palabra + despues;
     } else {
-        titulo.innerHTML = textoActual;
+      titulo.innerHTML = textoActual;
     }
 
     setTimeout(escribirEfecto, speed);
-}
+  }
 
-escribirEfecto();
+  escribirEfecto();
 
-function agregarEfectoCambioImagen(idElemento, imagenHover, imagenOriginal) {
-  const elemento = document.getElementById(idElemento);
-  
-  if (!elemento) return; // Verifica si el elemento existe
-
-  elemento.addEventListener("mouseenter", () => {
-      elemento.src = imagenHover;
-  });
-
-  elemento.addEventListener("mouseleave", () => {
-      elemento.src = imagenOriginal;
-  });
-}
-
-// Aplicamos la función a cada imagen
-agregarEfectoCambioImagen("1", "./img/robot.jpg", "./img/celular.png");
-agregarEfectoCambioImagen("2", "./img/robot.jpg", "./img/notebook.jpg");
-agregarEfectoCambioImagen("3","./img/robot.jpg", "./img/auriculares.jpg");
